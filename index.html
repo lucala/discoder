@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DisCoder: High-Fidelity Music Vocoding Using Neural Audio Codecs</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .audio-player {
+      width: 100%;
+    }
+  </style>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-title {
+      margin-top: 100px;
+    }
+    .sub-title {
+      margin-bottom: 75px;
+    }
+    .top-title {
+      margin-top: 35px;
+    }
+    .centered-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .col {
+      padding: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container sub-title">
+    <h1 class="text-center main-title">DisCoder: High-Fidelity Music <br>Vocoding Using Neural Audio Codecs</h1>
+    <p class="text-center">ICASSP 2025</p>
+    <p class="text-center">
+      <a href="https://disco.ethz.ch/members/lucala">Luca A. Lanzendörfer</a>,
+      <a href="https://disco.ethz.ch/members/fgroetschla">Florian Grötschla</a>,
+      <a>Michael Ungersböck</a>, and
+      <a href="https://disco.ethz.ch/members/wroger">Roger Wattenhofer</a>
+    </p>
+    <div class="container centered-buttons">
+      <div class="btn-group">
+        <a href="https://arxiv.org/abs/XXXX.XXXXX" class="btn btn-primary">Paper</a>
+        <a href="https://github.com/lucala/XXX" class="btn btn-primary">Code</a>
+      </div>
+    </div>
+
+    <h2 class="top-title">Mel Spectrogram Difference</h2>
+    <p class="text">Comparison of MTG-Jamendo<sup>1</sup> samples. The difference between the original and reconstructed mel spectrogram is shown.</p>
+    <div class="row">
+      <div class="col">
+        <p>Ground Truth</p>
+        <img src="mels/music/original/0.png" alt="Original Music Mel Spectrogram 0" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/original/0.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p>HiFi-GAN</p>
+        <img src="mels/music/hifigan_48k_256bins.ckpt/0_generated_diff.png" alt="HiFi-GAN Music Mel Spectrogram 0" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/0_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p>BigVGAN</p>
+        <img src="mels/music/bigvgan_24khz_100band/0_generated_diff.png" alt="BigVGAN Music Mel Spectrogram 0" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/0_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p>BigVGAN-v2</p>
+        <img src="mels/music/bigvgan_v2.pt/0_generated_diff.png" alt="BigVGAN-v2 Music Mel Spectrogram 0" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/0_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p><strong>DisCoder</strong></p>
+        <img src="mels/music/resilient-salad-1147_v48/0_generated_diff.png" alt="DisCoder Music Mel Spectrogram 0" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/0_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img src="mels/music/original/1.png" alt="Original Music Mel Spectrogram 1" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/original/1.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/hifigan_48k_256bins.ckpt/1_generated_diff.png" alt="HiFi-GAN Music Mel Spectrogram 1" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/1_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/bigvgan_24khz_100band/1_generated_diff.png" alt="BigVGAN Music Mel Spectrogram 1" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/1_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/bigvgan_v2.pt/1_generated_diff.png" alt="BigVGAN-v2 Music Mel Spectrogram 1" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/1_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/resilient-salad-1147_v48/1_generated_diff.png" alt="DisCoder Music Mel Spectrogram 1" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/1_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img src="mels/music/original/2.png" alt="Original Music Mel Spectrogram 2" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/original/2.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/hifigan_48k_256bins.ckpt/2_generated_diff.png" alt="HiFi-GAN Music Mel Spectrogram 2" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/2_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/bigvgan_24khz_100band/2_generated_diff.png" alt="BigVGAN Music Mel Spectrogram 2" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/2_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/bigvgan_v2.pt/2_generated_diff.png" alt="BigVGAN-v2 Music Mel Spectrogram 2" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/2_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/resilient-salad-1147_v48/2_generated_diff.png" alt="DisCoder Music Mel Spectrogram 2" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/2_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img src="mels/music/original/3.png" alt="Original Music Mel Spectrogram 3" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/original/3.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/hifigan_48k_256bins.ckpt/3_generated_diff.png" alt="HiFi-GAN Music Mel Spectrogram 3" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/3_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/bigvgan_24khz_100band/3_generated_diff.png" alt="BigVGAN Music Mel Spectrogram 3" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/3_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/bigvgan_v2.pt/3_generated_diff.png" alt="BigVGAN-v2 Music Mel Spectrogram 3" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/3_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <img src="mels/music/resilient-salad-1147_v48/3_generated_diff.png" alt="DisCoder Music Mel Spectrogram 3" class="img-fluid">
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/3_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+
+
+    <h2 class="top-title">Music Synthesis</h2>
+    <p class="text">Comparison of MTG-Jamendo<sup>1</sup> and MUSDB18-HQ<sup>2</sup> samples.</p>
+    <div class="row">
+      <div class="col">
+        <p>Ground Truth</p>
+        <audio controls class="audio-player">
+          <source src="samples/music/original/4.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p>HiFi-GAN</p>
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/4_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p>BigVGAN</p>
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/4_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p>BigVGAN-v2</p>
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/4_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p><strong>DisCoder</strong></p>
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/4_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/original/5.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/5_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/5_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/5_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/5_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/original/6.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/6_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/6_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/6_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/6_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/original/7.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/7_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/7_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/7_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/7_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/original/8.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/8_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/8_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/8_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/8_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/original/9.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/9_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/9_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/9_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/9_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/original/10.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/hifigan_48k_256bins.ckpt/10_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_24khz_100band/10_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/bigvgan_v2.pt/10_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/music/resilient-salad-1147_v48/10_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <h2 class="top-title">Speech Synthesis</h2>
+    <p class="text">DisCoder shows competitive performance on speech samples taken from LibriTTS<sup>3</sup>.</p>
+    <div class="row">
+      <div class="col">
+        <p>Ground Truth</p>
+        <audio controls class="audio-player">
+          <source src="samples/speech/original/0.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p>HiFi-GAN</p>
+        <audio controls class="audio-player">
+          <source src="samples/speech/hifigan_48k_256bins.ckpt/0_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p>BigVGAN</p>
+        <audio controls class="audio-player">
+          <source src="samples/speech/bigvgan_24khz_100band/0_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p>BigVGAN-v2</p>
+        <audio controls class="audio-player">
+          <source src="samples/speech/bigvgan_v2.pt/0_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <p><strong>DisCoder</strong></p>
+        <audio controls class="audio-player">
+          <source src="samples/speech/resilient-salad-1147_v48/0_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/original/1.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/hifigan_48k_256bins.ckpt/1_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/bigvgan_24khz_100band/1_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/bigvgan_v2.pt/1_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/resilient-salad-1147_v48/1_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/original/2.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/hifigan_48k_256bins.ckpt/2_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/bigvgan_24khz_100band/2_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/bigvgan_v2.pt/2_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/resilient-salad-1147_v48/2_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/original/3.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/hifigan_48k_256bins.ckpt/3_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/bigvgan_24khz_100band/3_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/bigvgan_v2.pt/3_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/resilient-salad-1147_v48/3_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/original/4.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/hifigan_48k_256bins.ckpt/4_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/bigvgan_24khz_100band/4_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/bigvgan_v2.pt/4_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="col">
+        <audio controls class="audio-player">
+          <source src="samples/speech/resilient-salad-1147_v48/4_generated.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+    <p>
+      <small><sup>1</sup><a href="https://mtg.github.io/mtg-jamendo-dataset/" target="_blank" rel="noopener noreferrer"></a>https://mtg.github.io/mtg-jamendo-dataset/</small><br>
+      <small><sup>2</sup><a href="https://sigsep.github.io/datasets/musdb.html" target="_blank" rel="noopener noreferrer"></a>https://sigsep.github.io/datasets/musdb.html</small><br>
+      <small><sup>3</sup><a href="https://www.openslr.org/60/" target="_blank" rel="noopener noreferrer"></a>https://www.openslr.org/60/</small><br>
+    </p>
+
+  </div>
+</body>
+</html>
